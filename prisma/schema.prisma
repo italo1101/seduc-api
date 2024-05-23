@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Employer {
+  id        String       @id @default(uuid())
+  name      String
+  email     String       @unique
+  post      String
+  videos    VideoBNCC[]
+
+  createdAt DateTime     @default(now())
+  updateAt  DateTime     @updatedAt
+}
+
+model VideoBNCC {
+  id                   String       @id @default(uuid())
+  url                  String       @unique
+  title                String
+  stage                String
+  curricularComponent  String
+  yearTeaching         Int
+  axis                 Json
+  skills               Json
+  employers            Employer[] 
+
+  createdAt            DateTime     @default(now())
+  updateAt             DateTime     @updatedAt
+}
