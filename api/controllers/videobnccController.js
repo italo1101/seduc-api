@@ -44,6 +44,8 @@ async function getVideosBNCC(ctx) {
       ...video,
       axis: JSON.parse(video.axis),
       skills: JSON.parse(video.skills),
+      date: video.createdAt, // Mapeando 'createdAt' para 'date'
+      year: video.yearTeaching, // Mapeando 'yearTeaching' para 'year'
     }));
   } catch (error) {
     console.error("Erro ao buscar os vídeos:", error);
@@ -101,6 +103,8 @@ async function getVideosBNCCFilter(ctx) {
       ...video,
       axis: JSON.parse(video.axis),
       skills: JSON.parse(video.skills),
+      date: video.createdAt, // Mapeando 'createdAt' para 'date'
+      year: video.yearTeaching, // Mapeando 'yearTeaching' para 'year'
     }));
   } catch (error) {
     console.error("Erro ao buscar os vídeos:", error);
