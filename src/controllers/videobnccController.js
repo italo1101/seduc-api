@@ -76,7 +76,6 @@ async function getVideosBNCCFilter(ctx) {
       filters.curricularComponent = curricularComponent;
     if (yearTeaching !== undefined)
       filters.yearTeaching = parseInt(yearTeaching, 10);
-    if (axis !== undefined) filters.axis = JSON.parse(axis);
 
     const allVideos = await prisma.videoBNCC.findMany({
       where: filters,
@@ -84,12 +83,18 @@ async function getVideosBNCCFilter(ctx) {
     });
 
     const filteredVideos = allVideos.filter((video) => {
+      let matches = true;
+
+      if (axis !== undefined) {
+        const videoAxis = JSON.parse(video.axis);
+        matches = videoAxis.some((axisItem) => axis.includes(axisItem));
+      }
+
       if (skills !== undefined) {
         const videoSkills = JSON.parse(video.skills);
-        return videoSkills.some((skill) => JSON.parse(skills).includes(skill));
-      } else {
-        return true;
+        matches = videoSkills.some((skill) => skills.includes(skill));
       }
+      return matches;
     });
 
     ctx.body = filteredVideos.map((video) => ({
@@ -103,7 +108,6 @@ async function getVideosBNCCFilter(ctx) {
     ctx.body = { error: "Erro ao buscar os vídeos" };
   }
 }
-
 
 //! UPDATE BY ID
 async function updateVideoBNCC(ctx) {
