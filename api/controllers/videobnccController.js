@@ -144,7 +144,6 @@ async function updateVideoBNCC(ctx) {
   }
 }
 
-//! DELETE BY ID
 async function deleteVideoBNCC(ctx) {
   try {
     const { id } = ctx.params;
