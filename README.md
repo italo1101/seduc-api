@@ -1,8 +1,6 @@
-# Sistema de Gerenciamento de Usuários, Escolas, Professores e Alunos
+# Sistema de Gerenciamento Escolar
 
-Este projeto é um sistema backend básico de gerenciamento de usuários, escolas, professores e alunos. Ele foi desenvolvido como parte de um desafio,
-onde o objetivo é permitir o cadastro e login de usuários (administradores) e a gestão completa das entidades relacionadas.
-
+Este projeto foi desenvolvido para a Secretaria de Educação do Recife como parte de um desafio técnico. O objetivo deste desafio é criar um sistema básico de gerenciamento de usuários, escolas, professores e alunos. O sistema permite o cadastro e login de administradores, bem como a gestão das escolas, professores e alunos, com as relações apropriadas entre eles.
 ## Objetivo do Projeto
 
 O objetivo deste desafio é criar um sistema que possibilite:
